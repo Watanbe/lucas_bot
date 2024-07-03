@@ -48,6 +48,26 @@ def change_password(message):
 
     user_dto = UserDTO(username=user.username, chat_id=chat.id)
 
+    has_user = user_service.get_user(user_dto)
+
+    if (has_user == None):
+        bot.send_message(chat.id, f"""
+    Olá {user.username},
+    
+    Não encontramos o seu perfil.
+
+    Digite /comprar para criar o seu acesso.
+    """)
+    
+    elif (has_user != None and has_user.payment_status == PAYMENT_STATUS_CREATED ):
+        bot.send_message(chat.id, f"""
+        Olá {has_user.username},
+Seu cadastro ainda não está ativo, para ativar realize o pagamento.
+Segue o seu link de pagamento: {has_user.payment_checkout_uri}
+
+Após efetuar o pagamento liberaremos o seu acesso.
+        """)
+
     user = user_service.change_password(user_dto)
 
     bot.send_message(chat.id, f"""
@@ -67,14 +87,31 @@ def payment_link(message):
 
     user_dto = UserDTO(username=user.username, chat_id=chat.id)
 
-    payment_link = user_service.get_payment_link(user_dto)
-    bot.send_message(chat.id, f"""
+    has_user = user_service.get_user(user_dto)
+
+    if (has_user == None):
+        bot.send_message(chat.id, f"""
     Olá {user.username},
+    
+    Não encontramos o seu perfil.
 
-Segue o seu link de pagamento: {payment_link}
-
-Após efetuar o pagamento liberaremos o seu acesso
+    Digite /comprar para criar o seu acesso.
     """)
+    elif (has_user != None and has_user.payment_status == PAYMENT_STATUS_PAYD ):
+        bot.send_message(chat.id, f"""
+    Olá {user.username},
+    
+    Você já tem cadastro ativo, caso não lembre as suas credenciais digite /redefinir
+    """)
+    else:
+        payment_link = user_service.get_payment_link(user_dto)
+        bot.send_message(chat.id, f"""
+        Olá {user.username},
+
+    Segue o seu link de pagamento: {payment_link}
+
+    Após efetuar o pagamento liberaremos o seu acesso
+        """)
 
 
 def verify(message):
