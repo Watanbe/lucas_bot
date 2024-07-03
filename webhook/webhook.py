@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 bot = telebot.TeleBot(BOT_API_KEY)
 
+logging.basicConfig(filename='/var/www/lucas_bot/webhook/app.log', level=logging.DEBUG)
+
 @app.route('/webhook/success', methods=['GET', 'POST'])
 def success():
     user_service = UserService()
