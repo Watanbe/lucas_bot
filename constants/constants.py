@@ -7,3 +7,4 @@ PAYMENT_STATUS_ERROR=3
 BOT_API_KEY="7267462744:AAF0yXwshLkKVRTImfgW7bPivH-MBFPz3qY"
 
 API_URI="https://ec2-3-93-143-49.compute-1.amazonaws.com/api/"
+# API_URI="http://127.0.0.1:8000/api/"
