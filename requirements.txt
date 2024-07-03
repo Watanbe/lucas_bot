@@ -1,0 +1,7 @@
+pyTelegramBotAPI
+peewee
+requests
+pymysql
+mercadopago
+flask
+passlib
