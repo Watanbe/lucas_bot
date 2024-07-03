@@ -68,15 +68,17 @@ Segue o seu link de pagamento: {has_user.payment_checkout_uri}
 Após efetuar o pagamento liberaremos o seu acesso.
         """)
 
-    user = user_service.change_password(user_dto)
+    else:
 
-    bot.send_message(chat.id, f"""
-    Olá {user.username},
+        user = user_service.change_password(user_dto)
 
-suas credenciais são: 
-usuário - {user.username}
-senha - {user.password}
-    """)
+        bot.send_message(chat.id, f"""
+        Olá {user.username},
+
+    suas credenciais são: 
+    usuário - {user.username}
+    senha - {user.password}
+        """)
 
 @bot.message_handler(commands=["cobranca"])
 def payment_link(message):
