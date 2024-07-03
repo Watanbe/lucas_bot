@@ -1,2 +1,4 @@
 env
 posts.egg-info
+
+*.pyc
