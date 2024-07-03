@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn intance for webhook app
+after=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/var/www/lucas_bot/webhook
+ExecStart=/var/www/lucas_bot/env/bin/gunicorn -b localhost:5000 webhook:app
+Restart=always
+[Install]
+WantedBy=multi-user.target

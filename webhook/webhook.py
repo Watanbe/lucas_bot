@@ -52,4 +52,5 @@ Segue o link para tentar novamente: {user.payment_checkout_uri}
 
 if __name__ == '__main__':
     context = ('/home/eduardo/projects/freela/lucas_crud/bot/bot/certificate.crt', '/home/eduardo/projects/freela/lucas_crud/bot/bot/certificate.key')
-    app.run(port=5000, debug=True, ssl_context=context)
+    # app.run(port=5000, debug=True, ssl_context=context)
+    app.run(port=5000)
