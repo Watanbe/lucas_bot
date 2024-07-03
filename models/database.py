@@ -5,6 +5,6 @@ database = MySQLDatabase(
     database='posts',
     user='root',
     password='123456789',
-    host='127.0.0.1',
+    host='ec2-3-93-143-49.compute-1.amazonaws.com',
     port=3306
 )

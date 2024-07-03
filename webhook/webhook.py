@@ -4,6 +4,8 @@ from flask import Flask, request, render_template
 from services.user_service import UserService
 from DTO.userDTO import UserDTO
 
+import logging
+
 app = Flask(__name__)
 
 bot = telebot.TeleBot(BOT_API_KEY)
@@ -21,7 +23,10 @@ def success():
     user_dto.payment_status = user.payment_status
     user_dto.payment_checkout_uri = user.payment_checkout_uri
 
-    user_service.change_password(user_dto)
+    try:
+        user_service.change_password(user_dto)
+    except Exception as e:
+        logging.error("Erro na troca de senha", e)
 
     bot.send_message(user.chat_id, f"""
 Olá {user.username}, seu pagamento foi aprovado.

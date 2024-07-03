@@ -69,4 +69,4 @@ class UserService:
             'Accept': 'application/json'
         }
 
-        response = requests.request("POST", url, headers=headers, data=data)
+        response = requests.request("POST", url, headers=headers, data=data, verify=False)

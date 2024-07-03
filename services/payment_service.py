@@ -1,6 +1,8 @@
 import mercadopago
 from constants.payment_constants import ACCESS_TOKEN
 from constants.product_constants import PRODUCT_PRICE, PRODUCT_TITLE, PRODUCT_CURRENCY
+from constants.constants import WEBHOOK_DNS
+
 class PaymentService:
     def __new__(cls):
         sdk = mercadopago.SDK(access_token=ACCESS_TOKEN)
@@ -16,8 +18,8 @@ class PaymentService:
                 }
             ],
             "back_urls": {
-                "success": "https://127.0.0.1:5000/webhook/success",
-                "failure": "https://127.0.0.1:5000/webhook/failure"
+                "success": f"{WEBHOOK_DNS}/webhook/success",
+                "failure": f"{WEBHOOK_DNS}/webhook/failure"
             },
             "auto_return": "all"
         }
