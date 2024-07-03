@@ -1,0 +1,11 @@
+[Unit]
+Description=Bot telegram
+after=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/var/www/lucas_bot
+ExecStart=/var/www/lucas_bot/env/bin/python /var/www/lucas_bot/bot.py
+Restart=always
+[Install]
+WantedBy=multi-user.target
