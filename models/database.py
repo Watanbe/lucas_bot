@@ -4,7 +4,7 @@ from peewee import MySQLDatabase
 database = MySQLDatabase(
     database='posts',
     user='root',
-    password='root',
-    host='localhost',
+    password='123456789',
+    host='127.0.0.1',
     port=3306
 )
