@@ -5,3 +5,4 @@ pymysql
 mercadopago
 flask
 passlib
+gunicorn
