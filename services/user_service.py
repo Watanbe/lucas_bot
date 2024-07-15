@@ -11,7 +11,7 @@ class UserService:
     def create_user(self, user_dto: UserDTO):
         payment_preference = PaymentService()
         user_dto.payment_id = payment_preference["id"]
-        user_dto.payment_checkout_uri = payment_preference["sandbox_init_point"]
+        user_dto.payment_checkout_uri = payment_preference["init_point"]
 
         self.user_dto = user_dto
 
