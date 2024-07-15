@@ -1,0 +1,8 @@
+gunicorn -b 0.0.0.0:5000 webhook:app 
+
+sudo systemctl daemon-reload
+sudo systemctl start flaskapp
+sudo systemctl enable flaskapp
+
+sudo systemctl start bot
+sudo systemctl enable bot
